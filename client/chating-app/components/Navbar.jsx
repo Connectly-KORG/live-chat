@@ -5,7 +5,6 @@ import { chatbubbleEllipsesOutline, personCircleOutline, settingsOutline, logOut
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   async function handleLogout() {
     localStorage.clear();
@@ -28,23 +27,15 @@ export default function Navbar() {
               <IonIcon icon={addCircleOutline} className="h-5 w-5" />
               <span>Create Room</span>
             </Link>
-            <div className="relative">
-              <button onClick={() => setDropdownOpen(!dropdownOpen)} className="flex items-center space-x-2 focus:outline-none">
-                <IonIcon icon={personCircleOutline} className="h-8 w-8 text-violet-600 hover:text-violet-700 transition duration-300" />
-              </button>
-              {dropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20">
-                  <Link to="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center space-x-2">
-                    <IonIcon icon={settingsOutline} className="h-4 w-4" />
-                    <span>Profile Settings</span>
-                  </Link>
-                  <button onClick={handleLogout} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center space-x-2">
-                    <IonIcon icon={logOutOutline} className="h-4 w-4" />
-                    <span>Logout</span>
-                  </button>
-                </div>
-              )}
-            </div>
+            <button 
+              onClick={handleLogout} 
+              className="flex items-center space-x-2 focus:outline-none"
+            >
+              <IonIcon 
+                icon={logOutOutline} 
+                className="h-8 w-8 text-violet-600 hover:text-violet-700 transition duration-300" 
+              />
+            </button>
           </div>
         </div>
       </div>
